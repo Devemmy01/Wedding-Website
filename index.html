@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our wedding ceremony</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class="bx bx-chevron-up scrolltop__icon"></i> 
+    </a>
+    
+
+
+    <header class="i-header " id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav__logo"><img src="img/logo.png" alt=""></a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link" >Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">Order of Programme</a></li>
+                    <li class="nav__item"><a href="#gallery" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="#wishes" class="nav__link">Send your Wishes</a></li>
+
+                    <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="i-main">
+        <section class="home" id="home">
+            <div class="home__container bd-container bd-grid">
+                <div class="home__data">
+                    <h1 class="home__title">Oluwafikunayomi <br> & <br> Tolulope </h1>
+                    <h2 class="home__subtitle">WELCOME <br> TO <br> OUR WEDDING</h2>
+                    <span>#SALoveStory</span>
+                </div><br><br>
+                <span>5th NOVEMBER 2022</span>
+            </div> 
+        </section>
+
+        <img src="img/m1.jpg" alt="" class="mid">
+
+        <section class="about section bd-container" id="about">
+            <div class="about__container bd-grid">
+                <div class="about__data">
+                    <h2 class="section-title about__initial">Order of programme</h2>
+                    <img src="img/m2.jpg" alt="">
+                </div>
+                <img src="images/spice.jpg" alt="">
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container exhibitions__container">
+                <h2 class="exhibitions__title">Gallery</h2>
+               
+                <div class="exhibitions__gallery">
+                    <article><img src="img/e (1).jpg" class="a"></article>
+                    <article><img src="img/e (2).jpg" class="b"></article>
+                    <article><img src="img/e.jpg" class="c"></article>
+                    <article><img src="img/e (3).jpg" class="d"></article>
+                    <article><img src="img/e (4).jpg" class="e"></article>
+                    <article><img src="img/e (5).jpg" class="f"></article>
+                    <article><img src="img/e (6).jpg" class="g"></article>
+                </div>
+            </div>
+       </section>
+
+       <section class="Vote section bd-container" id="wishes">
+        <h2>Vote of thanks</h2>
+        <div class="about__container bd-grid">
+            <h3>On this day, marking the beginning of our life together,
+                we give glory to almighty God for bringing us together and the blessings that follows. <br><br>
+                We will like to thank our parents for their supports as we begin this our journey to forever, we 
+                feel extremely fortunate to have your love, support and guidance. <br><br>
+                To our friends and well wishers, your presence here today is an honor and a joy in our lives. We
+                are grateful for the gift of you and really appreciate the distances that many have traveled to be here with us today.
+                Our special wish is that each of you will continue to be part of our lives. We say thank you, God bless you.
+                We love you. 
+            </h3>
+        </div>
+    </section>
+     
+        <div class="contact__data">
+            <div class="contactForm">
+                <form  name="submit-to-google-sheet">
+                    <h2>Send the couple your wishes</h2>
+                    <div class="inputBox">
+                        <label for="">
+                            Name
+                            <input type="text" required name="Name" class="name" placeholder="Full Name" id="" >
+                        </label>
+                    </div>
+                    <div class="inputBox">
+                        <label for="">
+                            Email
+                            <input type="email" required class="email" name="Email" placeholder="Email" id="">
+                        </label>
+                    </div>
+                    <div class="inputBox">
+                        <label for="">
+                            Message
+                            <textarea  name="Message" required class="message" placeholder="Type Your Message...." id="" cols="30" rows="10"></textarea>
+                        </label>
+                    </div>
+                    <div class="submit">
+                        <input type="submit" name="" id="" value="Send" >
+                    </div>
+                </form>
+                <p id="msg"></p>
+            </div>
+        </div>
+
+
+       
+    </main>
+
+    <footer>
+        <p class="footer__copy">&#169; 2022 designed by dev_emmy 07083455861. All right reserved.</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
+
+
+    <script src="index.js"></script>
+        <script>
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbydmes3ctIb7KaoMl9ID_mDvqj5par69rSISzu8Wm0DjHJffftON4j04Zk9QRvXgK3j/exec'
+                const form = document.forms['submit-to-google-sheet']
+                const msg = document.getElementById("msg")
+
+                form.addEventListener('submit', e => {
+                    e.preventDefault()
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        msg.innerHTML = "Your wishes has been sent!"
+                        setTimeout(function(){
+                            msg.innerHTML = ""
+                        },5000)
+                        form.reset()
+                    })
+                    .catch(error => console.error('Error!', error.message))
+                })
+
+
+                
+        </script>
+</body>
+</html>
